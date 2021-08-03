@@ -1,0 +1,69 @@
+swagger:
+  enabled: true
+spring:
+  session:
+    store-type: redis
+  security:
+    clientId: test
+    clientSecret: 111111
+    redirectUri: /oauth2/getAuthorizeCode
+    loginProcessingUrl: /v1/sys/login #用户名密码登录接口 UsernamePasswordAuthenticationFilter默认登录接口是/login
+    loginPage: /v1/sys/require #如果未认证过会走此接口包装了返回json结果给前端提示未认证
+    logoutUrl: /v1/sys/logout #退出接口
+    anonymous: #不需要登录即可访问的接口放行
+      - /v1/sys/require
+      - /oauth/token
+      - /oauth2/getCode
+      - /oauth2/getAuthorizeCode
+      - /oauth/authorize
+      - /oauth2/getToken
+      - /v1/sys/logout
+      - /status
+      - /error
+      - /v1/sys/login
+    statics: #静态资源过滤
+      - /oauth/check_token
+      - /doc.html
+      - /swagger-resources/**
+      - /v3/**
+  redis:
+    password:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8 #最大连接数
+        max-idle: 8 #最大空闲连接
+        min-idle: 0 #最小空闲连接
+  messages:
+    basename: messages #国际化文件路径
+    encoding: UTF-8
+  application:
+    name: security-demo
+  datasource:
+    url: jdbc:mysql://localhost:3306/security?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: HikariCp
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+server:
+  address: 192.168.1.148
+  port: 8080
+  servlet:
+    session:
+      cookie:
+        name: JSESSIONID
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

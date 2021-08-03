@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.security.domain.mapper.ResourceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.demo.security.domain.model.Resource">
+        <id column="id" property="id" />
+        <result column="adapter_type" property="adapterType" />
+        <result column="create_time" property="createTime" />
+        <result column="ish5" property="ish5" />
+        <result column="is_show" property="isShow" />
+        <result column="parent_id" property="parentId" />
+        <result column="remark" property="remark" />
+        <result column="resource_code" property="resourceCode" />
+        <result column="resource_image_url" property="resourceImageUrl" />
+        <result column="resource_name" property="resourceName" />
+        <result column="resource_name_show" property="resourceNameShow" />
+        <result column="resource_type" property="resourceType" />
+        <result column="resource_url" property="resourceUrl" />
+        <result column="status" property="status" />
+        <result column="update_time" property="updateTime" />
+        <result column="component_name" property="componentName" />
+        <result column="icon" property="icon" />
+        <result column="routing_address" property="routingAddress" />
+        <result column="title" property="title" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, adapter_type, create_time, ish5, is_show, parent_id, remark, resource_code, resource_image_url, resource_name, resource_name_show, resource_type, resource_url, status, update_time, component_name, icon, routing_address, title
+    </sql>
+
+</mapper>

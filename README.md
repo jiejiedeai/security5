@@ -1,0 +1,3 @@
+本系统用了security5 security5.3 之后整合了SpringCloud Oauth2 所以系统以后不需要依赖
+orm用得是mybatis-plus
+接口文档整合了knife4j
